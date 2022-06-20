@@ -14,6 +14,11 @@ const boxReward = document.getElementById("box-reward")
 // buat object baru bernama player
 const player = new Player()
 
+// buat object musik
+const musik = new Audio()
+musik.src = "asset/jackpot.mp3"
+musik.loop = true
+
 // buat karakter slot
 let default_option = ['🥶', '👻', '😍']
 box1.textContent = default_option[0]
@@ -30,16 +35,22 @@ function dice() {
   return gacha
 }
 
+// ketika tomnol rolling di klik
+function rolling() {
+  musik.pause()
+  location.href = "#start"
+}
+
 // Jika menang jalankan mwthod ini.
 function winner() {
   if (box1.textContent == box2.textContent && box1.textContent == box3.textContent) {
     location.href = "#reward"
     sectionReward.style.display = 'block'
     boxReward.textContent = box1.textContent
+    musik.play()
   } else {
     // kamu belum beruntung.
     // console.log('lose')
-
   }
 }
 
