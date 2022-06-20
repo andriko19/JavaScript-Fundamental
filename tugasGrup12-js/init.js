@@ -14,7 +14,7 @@ const boxReward = document.getElementById("box-reward")
 // buat object baru bernama player
 const player = new Player()
 
-// buat object musik
+// buat object baru bernama musik
 const musik = new Audio()
 musik.src = "asset/jackpot.mp3"
 musik.loop = true
@@ -25,7 +25,7 @@ box1.textContent = default_option[0]
 box2.textContent = default_option[1]
 box3.textContent = default_option[2]
 
-// Tuntuk meng-acak karakter
+// untuk meng-acak karakter
 function dice() {
   let gacha = []
   for (let i = 0; i < default_option.length; i++){
@@ -35,7 +35,7 @@ function dice() {
   return gacha
 }
 
-// ketika tomnol rolling di klik
+// ketika tombol rolling di klik
 function rolling() {
   musik.pause()
   location.href = "#start"
@@ -54,11 +54,11 @@ function winner() {
   }
 }
 
+// menjalankan tombol start
 function start() {
   // selama 100 = 0.1 detik
   const rolling = setInterval(function () {
     const result = dice()
-    // console.log('acak lur...', result)
     box1.textContent = result[0]
     box2.textContent = result[1]
     box3.textContent = result[2]
@@ -71,6 +71,7 @@ function start() {
   }, 3000)
 }
 
+// load waktu pertama dokumen di buka
 onload = function () {
   sectionStart.style.display = 'none'
   sectionReward.style.display = 'none'
@@ -86,25 +87,14 @@ onload = function () {
   }
 }
 
+// register
 function register() {
-  console.log(username.value)
-  // sessionStorage.setItem('token', username.value)
-  // registerForm.style.display = 'none'
-  // logoutForm.style.display = 'block'
-
-  // const windah = new Player('Windahh')
-  // console.log(windah.register())
-
-  // call setter
   player.username = username.value
-
-  // call getter
-  // console.log(player.username)
-
   player.register
   location.reload()
 }
 
+// logout
 function logout() {
   player.logout
 }
